@@ -1,93 +1,3 @@
-
-Claude finished the response
-
-Ran 5 commands, viewed a file
-Ran 5 commands, viewed a file
-That second <style> block is intentional — a Firewatch-inspired override layer (bold condensed type, flat poster colors) sitting on top of the base styles. Not corruption, just a smart cascade technique. Let me verify the actual chapter content swapped correctly.
-
-
-Ran 3 commands · 1 note
-Ran 3 commands · 1 note
-That's correct. PA School is now chapter two, Zeus is chapter three — colors, illustrations, and captions all moved together, and photo naming stayed positional (ch2-* for whatever's in slot 2, ch3-* for slot 3).
-
-
-Ran a command, read a file
-Ran a command, read a file
-One thing worth flagging: since photo filenames stay tied to slot position rather than story, if you'd already started naming photos for Zeus as ch2-* and PA School as ch3-*, you'll need to swap those names too — PA School photos now go in ch2-*, Zeus in ch3-*. Upload this over your current index.html and you're set.
-
-
-Index
-Code · HTML 
-ok adjust the order to be japan, Chicago, Zeus, Wedding and lastly home
-
-Good news — that's already the current order: Engagement (Japan) → PA School (Chicago) → Zeus → Wedding → Home. The swap we just did set it up exactly that way, so no changes needed. The file I gave you last is ready to go as-is.
-
-Is there any way to add music to the site?
-
-
-Thought for 9s
-Thought for 9s
-Yes — the cleanest approach for a personal site like this is a small toggle button that lets you start/stop a looping background track (autoplay-with-sound is blocked by browsers until someone interacts with the page anyway, so a toggle is really the only option that reliably works). I'll wire that up now.
-
-One thing to flag: I can build the player, but I can't source or embed an actual song file myself — copyrighted music isn't something I can generate or pull in. You'll need to supply the audio file (something you own or have rights to use), the same way you're supplying photos.
-
-
-Ran 5 commands, viewed 3 files, edited 3 files · 3 notes
-Ran 5 commands, viewed 3 files, edited 3 files · 3 notes
-Added a small round toggle button in the bottom-left corner — click to play/pause, the bars animate while it's playing. To make it actually play sound:
-
-Prepare your audio file
-Save your track as an MP3 named exactly song.mp3. Keep it reasonably compressed (128–192kbps is plenty for background music and keeps the repo small).
-1
-2
-3
-4
-A couple of quick notes: it starts paused by design (browsers block autoplay-with-sound until someone interacts with the page, so a silent auto-start isn't really possible anyway), and volume is set to 0.55 in the code if you want it louder or quieter — just change that number.
-
-
-Index
-Code · HTML 
-Ok, take this and update it so that there are two play buttons at the very end side by side. one should play a file PMR.m4a and the other should play PMM.m4a
-
-
-Thought for 11s
-Thought for 11s
-
-<!DOCTYPE html> <html lang="en"> <head> <meta charset="UTF-8"> <meta name="viewport" content="width=device-width, initial-scale=1.0"> <title>Our Story — A Timeline</title> <link rel="preconnect" href="https://fonts.googleapis.com"> <link rel="preconnect" href="https://fonts.gstatic.com" cross
-
-pasted
-
-Here's the file to update
-
-
-Thought for 26s
-Thought for 26s
-Got it — I'll treat this as the new base file (I see you've since added Courtney's name and tweaked several captions) and add two side-by-side play buttons at the very end, one for each track.
-
-
-Edited 4 files, ran 2 commands, created a file · 4 notes
-Edited 4 files, ran 2 commands, created a file · 4 notes
-Two poster-style buttons now sit centered right after the footer, labeled PMR and PMM, styled to match the Firewatch treatment (hard edges, orange accent when active, bar animation while playing). They're mutually exclusive — starting one stops the other. To make them work:
-
-Create an audio folder
-Create an audio folder in your repo the same way you did for images (Add file → Create new file → type audio/PMR.m4a as the path, or just drag both files into a new audio folder via Upload files).
-1
-2
-3
-One note: .m4a playback support varies a bit by browser (Safari and Chrome handle it fine; some older or niche browsers don't). If you ever hit playback issues for a visitor, converting to .mp3 as a fallback is an easy swap.
-
-
-Index
-Code · HTML 
-
-
-
-
-
-Claude is AI and can make mistakes. Please double-check responses.
-
-
-Index · HTML
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -105,14 +15,14 @@ Index · HTML
     --ink:#1c1a17;
     --line-w: 2px;
   }
- 
+
   *{ margin:0; padding:0; box-sizing:border-box; }
- 
+
   html{ scroll-behavior:smooth; }
   @media (prefers-reduced-motion: reduce){
     html{ scroll-behavior:auto; }
   }
- 
+
   body{
     background:#163b3b;
     color:var(--paper);
@@ -120,10 +30,10 @@ Index · HTML
     overflow-x:hidden;
     -webkit-font-smoothing:antialiased;
   }
- 
+
   /* ---------- shared chapter chrome ---------- */
   .chapter{ position:relative; }
- 
+
   .eyebrow{
     font-family:var(--font-body);
     font-size:12px;
@@ -132,21 +42,21 @@ Index · HTML
     font-weight:600;
     opacity:.85;
   }
- 
+
   .scene-title{
     font-family:var(--font-display);
     font-weight:400;
     line-height:1.02;
     letter-spacing:-0.01em;
   }
- 
+
   .scene-sub{
     font-family:var(--font-display);
     font-style:italic;
     font-weight:400;
     opacity:.85;
   }
- 
+
   /* ---------- side navigation ---------- */
   .trail-nav{
     position:fixed;
@@ -182,7 +92,7 @@ Index · HTML
   @media (max-width: 720px){
     .trail-nav{ right:14px; gap:16px; }
   }
- 
+
   /* ---------- intro ---------- */
   .intro{
     height:100vh;
@@ -221,7 +131,7 @@ Index · HTML
     animation: bob 2.6s ease-in-out infinite;
   }
   @keyframes bob{ 0%,100%{ transform:translateY(0);} 50%{ transform:translateY(8px);} }
- 
+
   /* ---------- illustrated scene (parallax) ---------- */
   .scene-wrap{
     height:170vh;
@@ -241,7 +151,7 @@ Index · HTML
     display:block;
   }
   .layer{ will-change:transform; }
- 
+
   .scene-copy{
     position:absolute;
     left:0; right:0;
@@ -258,7 +168,7 @@ Index · HTML
     font-size:clamp(1rem, 2.2vw, 1.35rem);
     margin-top:10px;
   }
- 
+
   /* ---------- gallery ---------- */
   .gallery-wrap{
     height:420vh;
@@ -321,7 +231,7 @@ Index · HTML
     .gallery-track{ padding-left:5vw; }
     .gallery-caption{ left:5vw; }
   }
- 
+
   /* progress index, e.g. 03 / 05 */
   .chapter-index{
     position:absolute;
@@ -334,7 +244,18 @@ Index · HTML
     z-index:5;
   }
   @media (max-width:720px){ .chapter-index{ left:18px; top:22px; } }
- 
+
+  /* ---------- closing message, above the music players ---------- */
+  .closing-title{
+    text-align:center;
+    font-family:var(--font-display);
+    font-weight:700;
+    letter-spacing:.02em;
+    font-size:clamp(2rem, 5vw, 3.6rem);
+    color:var(--paper);
+    padding:100px 24px 10px;
+  }
+
   footer{
     padding:120px 24px 90px;
     text-align:center;
@@ -342,7 +263,7 @@ Index · HTML
   }
   footer .scene-sub{ font-size:clamp(1.3rem,3vw,1.9rem); }
   footer p{ margin-top:16px; opacity:.5; font-size:13px; letter-spacing:.08em; }
- 
+
   /* ---------- end-of-page music players ---------- */
   .music-players{
     display:flex;
@@ -385,10 +306,10 @@ Index · HTML
   @keyframes bar2{ 0%,100%{ transform:scaleY(.7); } 50%{ transform:scaleY(.3); } }
   @keyframes bar3{ 0%,100%{ transform:scaleY(.5); } 50%{ transform:scaleY(1); } }
 </style>
- 
+
 <style id="firewatch-inspired-restyle">
 @import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap');
- 
+
 :root{
   --font-display:'Barlow Condensed', 'Arial Narrow', sans-serif;
   --font-body:'Inter', Arial, sans-serif;
@@ -402,7 +323,7 @@ Index · HTML
   --yellow:#f2b84b;
   --line-w:2px;
 }
- 
+
 /* Firewatch-inspired visual language: bold condensed type, flat poster colors,
    hard-edged shapes, warm paper, and no glossy UI treatment. */
 body{
@@ -411,13 +332,13 @@ body{
   font-family:var(--font-body);
   letter-spacing:.01em;
 }
- 
+
 .intro{
   background:
     radial-gradient(circle at 72% 23%, rgba(242,184,75,.95) 0 5%, transparent 5.3%),
     linear-gradient(180deg,#274f55 0%,#39736d 43%,#d66b42 78%,#c84b32 100%);
 }
- 
+
 .intro:after{
   content:"";
   position:absolute;
@@ -429,7 +350,7 @@ body{
   clip-path:polygon(0 75%,8% 62%,17% 70%,27% 43%,36% 61%,47% 35%,57% 57%,68% 31%,78% 55%,88% 38%,100% 58%,100% 100%,0 100%);
   opacity:.95;
 }
- 
+
 .intro-stars{opacity:.16;mix-blend-mode:screen}
 .intro h1{
   font-family:var(--font-display);
@@ -459,7 +380,7 @@ body{
   color:var(--cream);
   opacity:.8;
 }
- 
+
 .eyebrow{
   font-family:var(--font-display);
   font-weight:700;
@@ -484,7 +405,7 @@ body{
   color:#f8e9c9;
   opacity:.92;
 }
- 
+
 .trail-nav{
   left:24px;
   right:auto;
@@ -504,7 +425,7 @@ body{
 .trail-nav .stem{
   background:rgba(246,231,199,.4);
 }
- 
+
 .scene-wrap{
   background:#244e4c;
 }
@@ -542,7 +463,7 @@ body{
   color:#f6e7c7;
   opacity:.7;
 }
- 
+
 .gallery-wrap{
   background:
     linear-gradient(180deg,#183c3d 0%,#214d4d 100%);
@@ -584,7 +505,7 @@ body{
 .gallery-caption .eyebrow{
   color:#f2b84b;
 }
- 
+
 footer{
   background:#173b3c;
   padding:140px 24px 100px;
@@ -603,7 +524,7 @@ footer p{
   letter-spacing:.13em;
   color:#e66b32;
 }
- 
+
 .music-btn{
   border-radius:0;
   border:2px solid rgba(246,231,199,.6);
@@ -620,13 +541,22 @@ footer p{
   border-color:var(--orange);
   background:rgba(230,107,50,.16);
 }
- 
+
+.closing-title{
+  font-family:var(--font-display);
+  font-weight:800;
+  text-transform:uppercase;
+  letter-spacing:.025em;
+  text-shadow:3px 4px 0 rgba(18,42,44,.3);
+  color:#f6e7c7;
+}
+
 /* Give the SVG scenes the warmer, flatter poster treatment without changing
    the story or the parallax system. */
 .scene-sticky svg{
   filter:saturate(.9) contrast(1.04);
 }
- 
+
 /* Mobile keeps the large poster-like typography but moves copy back toward center. */
 @media (max-width:720px){
   .trail-nav{left:13px;right:auto}
@@ -639,10 +569,10 @@ footer p{
   .gallery-slide{flex-basis:86vw;margin-right:5vw}
 }
 </style>
- 
+
 </head>
 <body>
- 
+
 <nav class="trail-nav" id="trailNav">
   <button data-target="chapter-1" aria-label="Engagement"></button>
   <div class="stem"></div>
@@ -654,7 +584,7 @@ footer p{
   <div class="stem"></div>
   <button data-target="chapter-5" aria-label="Family"></button>
 </nav>
- 
+
 <!-- ============ INTRO ============ -->
 <section class="intro">
   <svg class="intro-stars" viewBox="0 0 1200 800" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
@@ -669,12 +599,12 @@ footer p{
   <h1>Kameron <span class="amp">&amp;</span> Courtney</h1>
   <p class="hint">Scroll to begin ↓</p>
 </section>
- 
+
 <!-- ============================================================ -->
 <!-- CHAPTER 1 — ENGAGEMENT (Japan, snow, mountains, Tokyo)        -->
 <!-- ============================================================ -->
 <div class="chapter" id="chapter-1" data-chapter="1">
- 
+
   <div class="scene-wrap">
     <div class="chapter-index">01 / 05</div>
     <div class="scene-sticky">
@@ -692,12 +622,12 @@ footer p{
         </defs>
         <rect width="1600" height="900" fill="url(#sky1)"/>
         <circle class="layer" data-speed="0.1" cx="1280" cy="180" r="70" fill="url(#moon1)" opacity="0.9"/>
- 
+
         <!-- faint distant hills, far horizon -->
         <g class="layer" data-speed="0.12">
           <path d="M0,500 Q200,470 420,495 Q560,510 700,485 L900,485 Q1060,505 1220,490 Q1400,472 1600,500 L1600,900 L0,900 Z" fill="#42607e" opacity="0.55"/>
         </g>
- 
+
         <!-- Mt. Yotei: single symmetric volcanic cone -->
         <g class="layer" data-speed="0.18">
           <path d="M800,230 C752,296 684,360 610,422 C520,464 390,500 230,528 L1370,528 C1210,500 1080,464 990,422 C916,360 848,296 800,230 Z" fill="#36585a"/>
@@ -732,7 +662,7 @@ footer p{
           </g>
         </g>
       </svg>
- 
+
       <div class="scene-copy">
         <div class="eyebrow">Chapter One</div>
         <h2 class="scene-title">Engagement</h2>
@@ -740,7 +670,7 @@ footer p{
       </div>
     </div>
   </div>
- 
+
   <div class="gallery-wrap">
     <div class="gallery-sticky">
       <div class="gallery-caption">
@@ -756,12 +686,12 @@ footer p{
     </div>
   </div>
 </div>
- 
+
 <!-- ============================================================ -->
 <!-- CHAPTER 3 — PA SCHOOL, CHICAGO                                 -->
 <!-- ============================================================ -->
 <div class="chapter" id="chapter-2" data-chapter="2">
- 
+
   <div class="scene-wrap">
     <div class="chapter-index">02 / 05</div>
     <div class="scene-sticky">
@@ -774,12 +704,12 @@ footer p{
           </linearGradient>
         </defs>
         <rect width="1600" height="900" fill="url(#sky3)"/>
- 
+
         <!-- lake reflection glow -->
         <g class="layer" data-speed="0.1">
           <ellipse cx="800" cy="760" rx="900" ry="60" fill="#356e6d" opacity="0.4"/>
         </g>
- 
+
         <!-- far skyline -->
         <g class="layer" data-speed="0.2" fill="#234647">
           <rect x="60" y="480" width="50" height="280"/>
@@ -837,7 +767,7 @@ footer p{
           <rect x="-20" y="-18" width="14" height="6" rx="2"/>
         </g>
       </svg>
- 
+
       <div class="scene-copy">
         <div class="eyebrow">Chapter Two</div>
         <h2 class="scene-title">PA School</h2>
@@ -845,7 +775,7 @@ footer p{
       </div>
     </div>
   </div>
- 
+
   <div class="gallery-wrap">
     <div class="gallery-sticky">
       <div class="gallery-caption">
@@ -861,12 +791,12 @@ footer p{
     </div>
   </div>
 </div>
- 
+
 <!-- ============================================================ -->
 <!-- CHAPTER 2 — ZEUS (grey schnauzer)                              -->
 <!-- ============================================================ -->
 <div class="chapter" id="chapter-3" data-chapter="3">
- 
+
   <div class="scene-wrap">
     <div class="chapter-index">03 / 05</div>
     <div class="scene-sticky">
@@ -880,7 +810,7 @@ footer p{
         </defs>
         <rect width="1600" height="900" fill="url(#sky2)"/>
         <circle class="layer" data-speed="0.12" cx="1250" cy="220" r="90" fill="#f4c56c" opacity="0.55"/>
- 
+
         <!-- far tree line -->
         <g class="layer" data-speed="0.2" fill="#35504a">
           <path d="M0,560 Q80,500 160,560 Q240,500 320,560 Q400,500 480,560 Q560,500 640,560 Q720,500 800,560 Q880,500 960,560 Q1040,500 1120,560 Q1200,500 1280,560 Q1360,500 1440,560 Q1520,500 1600,560 L1600,900 L0,900 Z"/>
@@ -915,7 +845,7 @@ footer p{
           <path d="M0,900 L0,760 Q400,720 800,770 T1600,750 L1600,900 Z"/>
         </g>
       </svg>
- 
+
       <div class="scene-copy">
         <div class="eyebrow">Chapter Three</div>
         <h2 class="scene-title">Zeus</h2>
@@ -923,7 +853,7 @@ footer p{
       </div>
     </div>
   </div>
- 
+
   <div class="gallery-wrap">
     <div class="gallery-sticky">
       <div class="gallery-caption">
@@ -939,12 +869,12 @@ footer p{
     </div>
   </div>
 </div>
- 
+
 <!-- ============================================================ -->
 <!-- CHAPTER 4 — WEDDING                                            -->
 <!-- ============================================================ -->
 <div class="chapter" id="chapter-4" data-chapter="4">
- 
+
   <div class="scene-wrap">
     <div class="chapter-index">04 / 05</div>
     <div class="scene-sticky">
@@ -958,7 +888,7 @@ footer p{
         </defs>
         <rect width="1600" height="900" fill="url(#sky4)"/>
         <circle class="layer" data-speed="0.1" cx="800" cy="360" r="130" fill="#f7d69a" opacity="0.9"/>
- 
+
         <!-- far tree line -->
         <g class="layer" data-speed="0.2" fill="#65403b">
           <path d="M0,560 Q160,480 320,560 Q480,480 640,560 Q800,480 960,560 Q1120,480 1280,560 Q1440,480 1600,560 L1600,900 L0,900 Z"/>
@@ -997,7 +927,7 @@ footer p{
           <path d="M0,900 L0,800 Q800,760 1600,800 L1600,900 Z"/>
         </g>
       </svg>
- 
+
       <div class="scene-copy">
         <div class="eyebrow">Chapter Four</div>
         <h2 class="scene-title">The Wedding</h2>
@@ -1005,7 +935,7 @@ footer p{
       </div>
     </div>
   </div>
- 
+
   <div class="gallery-wrap">
     <div class="gallery-sticky">
       <div class="gallery-caption">
@@ -1021,12 +951,12 @@ footer p{
     </div>
   </div>
 </div>
- 
+
 <!-- ============================================================ -->
 <!-- CHAPTER 5 — FAMILY & HOUSE                                     -->
 <!-- ============================================================ -->
 <div class="chapter" id="chapter-5" data-chapter="5">
- 
+
   <div class="scene-wrap">
     <div class="chapter-index">05 / 05</div>
     <div class="scene-sticky">
@@ -1040,14 +970,14 @@ footer p{
         </defs>
         <rect width="1600" height="900" fill="url(#sky5)"/>
         <circle class="layer" data-speed="0.08" cx="1300" cy="180" r="70" fill="#f8dc9d" opacity="0.8"/>
- 
+
         <!-- birds -->
         <g class="layer" data-speed="0.16" stroke="#486d67" stroke-width="3" fill="none" stroke-linecap="round" opacity="0.7">
           <path d="M180,150 q14,-16 28,0 q14,-16 28,0"/>
           <path d="M300,200 q10,-12 20,0 q10,-12 20,0"/>
           <path d="M420,140 q12,-14 24,0 q12,-14 24,0"/>
         </g>
- 
+
         <!-- rolling hills -->
         <g class="layer" data-speed="0.22" fill="#789b78">
           <path d="M0,560 Q400,480 800,540 T1600,520 L1600,900 L0,900 Z"/>
@@ -1055,7 +985,7 @@ footer p{
         <g class="layer" data-speed="0.34" fill="#557c68">
           <path d="M0,640 Q400,580 800,620 T1600,600 L1600,900 L0,900 Z"/>
         </g>
- 
+
         <!-- the house -->
         <g class="layer" data-speed="0.46" transform="translate(760,540)">
           <rect x="-140" y="40" width="280" height="180" fill="#a85d42"/>
@@ -1085,7 +1015,7 @@ footer p{
           <path d="M0,900 L0,800 Q400,760 800,800 T1600,780 L1600,900 Z"/>
         </g>
       </svg>
- 
+
       <div class="scene-copy">
         <div class="eyebrow">Chapter Five</div>
         <h2 class="scene-title">Home</h2>
@@ -1093,7 +1023,7 @@ footer p{
       </div>
     </div>
   </div>
- 
+
   <div class="gallery-wrap">
     <div class="gallery-sticky">
       <div class="gallery-caption">
@@ -1109,9 +1039,11 @@ footer p{
     </div>
   </div>
 </div>
-  <h2 class="scene-title">Happy Anniversary Boopie</h2>
- <div class="music-players">
-  <button class="music-btn" id="btnPMR" aria-label="Play PMR" aria-pressed="false">
+
+<div class="closing-title">Happy Anniversary Boopie</div>
+
+<div class="music-players">
+  <button class="music-btn" id="btnPMR" aria-label="Play Ruby" aria-pressed="false">
     <svg class="icon-bars" viewBox="0 0 18 18" xmlns="http://www.w3.org/2000/svg">
       <rect x="2" y="6" width="3" height="9" rx="1"/>
       <rect x="7.5" y="2" width="3" height="13" rx="1"/>
@@ -1119,7 +1051,7 @@ footer p{
     </svg>
     <span>Ruby</span>
   </button>
-  <button class="music-btn" id="btnPMM" aria-label="Play PMM" aria-pressed="false">
+  <button class="music-btn" id="btnPMM" aria-label="Play Margot" aria-pressed="false">
     <svg class="icon-bars" viewBox="0 0 18 18" xmlns="http://www.w3.org/2000/svg">
       <rect x="2" y="6" width="3" height="9" rx="1"/>
       <rect x="7.5" y="2" width="3" height="13" rx="1"/>
@@ -1134,24 +1066,23 @@ footer p{
 <audio id="audioPMM" loop preload="none">
   <source src="audio/PMM.m4a" type="audio/mp4">
 </audio>
+
 <footer>
   <p class="scene-sub">To be continued...</p>
   <p>Made with love</p>
 </footer>
- 
 
- 
 <script>
 (function(){
   var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
- 
+
   var scenes = Array.from(document.querySelectorAll('.scene-wrap'));
   var galleries = Array.from(document.querySelectorAll('.gallery-wrap'));
   var navButtons = Array.from(document.querySelectorAll('.trail-nav button'));
   var chapters = Array.from(document.querySelectorAll('.chapter'));
- 
+
   function clamp(v, min, max){ return Math.max(min, Math.min(max, v)); }
- 
+
   function updateScenes(){
     var vh = window.innerHeight;
     scenes.forEach(function(scene){
@@ -1174,7 +1105,7 @@ footer p{
       }
     });
   }
- 
+
   function updateGalleries(){
     var vh = window.innerHeight;
     galleries.forEach(function(g){
@@ -1189,7 +1120,7 @@ footer p{
       }
     });
   }
- 
+
   function updateNav(){
     var mid = window.innerHeight / 2;
     var activeIndex = 0;
@@ -1201,7 +1132,7 @@ footer p{
       btn.classList.toggle('active', i === activeIndex);
     });
   }
- 
+
   var ticking = false;
   function onScroll(){
     if (!ticking){
@@ -1214,23 +1145,23 @@ footer p{
       ticking = true;
     }
   }
- 
+
   window.addEventListener('scroll', onScroll, { passive:true });
   window.addEventListener('resize', onScroll);
- 
+
   navButtons.forEach(function(btn){
     btn.addEventListener('click', function(){
       var target = document.getElementById(btn.getAttribute('data-target'));
       if (target){ target.scrollIntoView({ behavior: reduceMotion ? 'auto' : 'smooth' }); }
     });
   });
- 
+
   // ---------- end-of-page music players (mutually exclusive) ----------
   var players = [
     { btn: document.getElementById('btnPMR'), audio: document.getElementById('audioPMR') },
     { btn: document.getElementById('btnPMM'), audio: document.getElementById('audioPMM') }
   ];
- 
+
   function stopAll(){
     players.forEach(function(p){
       if (!p.audio) return;
@@ -1239,7 +1170,7 @@ footer p{
       p.btn.setAttribute('aria-pressed', 'false');
     });
   }
- 
+
   players.forEach(function(p){
     if (!p.btn || !p.audio) return;
     p.audio.volume = 0.6;
@@ -1253,14 +1184,10 @@ footer p{
       }
     });
   });
- 
+
   onScroll();
 })();
 </script>
- 
+
 </body>
 </html>
- 
-
-
-
